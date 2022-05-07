@@ -1,26 +1,40 @@
 from fastapi import FastAPI
-from typing import Optional
-from pydantic import BaseModel
 
 app = FastAPI()
 
+@app.post("/create/")
+def create_card(
+    name: str,
+    edition: str,
+    language: str,
+    foil: bool,
+    price: float,
+    quantity: int,
+    parent_id: int,
+):
 
-class Item(BaseModel):
-    name: str
-    price: float
-    is_offer: Optional[bool] = None
+    return 0
 
+@app.get("/listCard/{name_card}")
+def list_card_by_name(name_card: str):
+    return {"item_id": name_card}
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+@app.get("/listAllCards/")
+def list_all_cards():
+    return {"item_id"}
 
+@app.put("/editCard/{name_card}")
+def update_card(
+    name: str,
+    edition: str,
+    language: str,
+    foil: bool,
+    price: float,
+    quantity: int,
+    parent_id: int
+):
+    return {"item_name"}
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
-
-
-@app.put("/items/{item_id}")
-def update_item(item_id: int, item: Item):
-    return {"item_name": item.name, "item_id": item_id}
+@app.delete("/deleteCard/{name_card}")
+def list_card_by_name(name_card: str):
+    return 0
