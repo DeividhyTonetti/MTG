@@ -7,7 +7,7 @@ class UserRepository():
         self.db = db
 
     def create(self, user: schemes.UserScheme):
-        db_user = user_model.Card(name= user.name)
+        db_user = user_model.User(name= user.name)
 
         self.db.add(db_user)
         self.db.commit()
@@ -16,7 +16,7 @@ class UserRepository():
         return db_user
 
     def list(self):
-        users = self.db.query(user_model.Card).all()
+        users = self.db.query(user_model.User).all()
         
         return users
 

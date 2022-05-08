@@ -1,7 +1,8 @@
-from sqlalchemy import Table, Column, ForeignKey
+from sqlalchemy import Column, ForeignKey
+from sqlalchemy.orm import relationship
 from sqlalchemy.sql.sqltypes import Integer, String, Boolean, Float
 from config.db import Base
-
+from models import user_model
 
 class Card(Base):
     __tablename__ = 'card'
@@ -13,4 +14,6 @@ class Card(Base):
     foil = Column('foil', Boolean(False), nullable=False)
     price = Column('price', Float, nullable=False)
     quantity = Column('quantity', Integer, nullable=False)
-    # user_id = Column('user_id', Integer, ForeignKey('users.id'), nullable=False)
+    user_id = Column('user_id', str, ForeignKey('users.id'), nullable=False)
+
+    user = relationship(user_model.User, back_populates="cards")
