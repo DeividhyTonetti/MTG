@@ -14,12 +14,12 @@ class CardRepository():
             foil= card.foil,
             price= card.price,
             quantity= card.quantity,
-            parent_id= card.parent_id,
+            user_id= card.user_id,
         )
 
         self.db.add(db_card)
         self.db.commit()
-        self.db.refresh()
+        self.db.refresh(db_card)
 
         return db_card
 
