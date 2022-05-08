@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from Routes.router import router
-from config.db import engine
+from config.db import create_db
+
+create_db()
 
 app = FastAPI(
     title='Magic The Gathering',

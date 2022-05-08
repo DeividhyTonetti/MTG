@@ -1,20 +1,16 @@
-from fastapi import APIRouter
-from config.db import conn
+from fastapi import APIRouter, Depends
+from sqlalchemy.orm import Session
+from config.db import get_db
+from scheme.schemes import CardScheme
+from repository.card_repository import CardRepository
 
 router = APIRouter()
 
-@router.post("/create/")
-async def create_card(
-    name: str,
-    edition: str,
-    language: str,
-    foil: bool,
-    price: float,
-    quantity: int,
-    parent_id: int,
-):
+@router.post("/create")
+async def create_card(card: CardScheme, db: Session = Depends(get_db)):
+    created_card = CardRepository(db).create(card)
 
-    return 0
+    return created_card
 
 @router.get("/listCard/{name_card}")
 async def list_card_by_name(name_card: str):
