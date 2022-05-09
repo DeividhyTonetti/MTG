@@ -58,16 +58,32 @@ async def list_all_cards(user_name: str, db: Session = Depends(get_db)):
 
 @router.put("/editCard/{name_card}")
 async def update_card(
-    name: str,
-    edition: str,
-    language: str,
-    foil: bool,
-    price: float,
-    quantity: int,
-    parent_id: int
+    name_card: str,
+    user_name: str,
+    quantity: int = None,
+    price: float = None,
+    db: Session = Depends(get_db)
 ):
-    return {"item_name"}
 
-@router.delete("/deleteCard/{name_card}")
-async def list_card_by_name(name_card: str):
-    return 0
+    translate = Translator()
+    idiom = translate.detect(name_card).lang
+    name_translated = translate.translate(name_card, src=idiom, dest='pt')
+
+    card_name = name_translated.text
+    update_card = CardRepository(db).update(card_name, user_name, quantity, price)
+
+    return update_card
+
+@router.delete("/deleteCard/{name_card}/{name_user}")
+async def delete_card(name_card: str, name_user: str, db: Session = Depends(get_db)):
+    
+    translate = Translator()
+    idiom = translate.detect(name_card).lang
+    name_translated = translate.translate(name_card, src=idiom, dest='pt')
+
+    name = name_translated.text
+
+    print(name, name_user)
+    delete_card = CardRepository(db).delete(name, name_user)
+
+    return delete_card

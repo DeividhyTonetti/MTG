@@ -58,8 +58,35 @@ class CardRepository():
         return cards
 
 
-    def update(self):
-        pass
+    def update(
+        self, 
+            card_name: str, 
+            user_name: str, 
+            quantity: int,
+            price: float
+        ):
 
-    def delete(self):
-        pass
+        cards = (
+            self.
+            db.
+            query(card_model.Card).
+            filter(card_model.Card.name==card_name, card_model.Card.user_name==user_name).
+            update({card_model.Card.quantity: quantity, card_model.Card.price: price})
+        )
+
+        self.db.commit()
+        
+        return cards
+
+    def delete(self, card_name: str, user_name: str):
+        cards = (
+            self.
+            db.
+            query(card_model.Card).
+            filter(card_model.Card.name==card_name, card_model.Card.user_name==user_name).
+            delete()
+        )
+
+        self.db.commit()
+        
+        return cards
