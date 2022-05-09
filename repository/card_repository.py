@@ -1,20 +1,30 @@
 from sqlalchemy.orm import Session
 from scheme import schemes
 from models import card_model
+from sqlalchemy import desc
 
 class CardRepository():
     def __init__(self, db: Session) -> None:
         self.db = db
 
-    def create(self, card: schemes.CardScheme):
+    def create(
+        self, 
+        # card: schemes.CardScheme 
+        name,
+        user_name,
+        edition,
+        language,
+        foil,
+        price,
+    ):
         db_card = card_model.Card(
-            name= card.name,
-            edition= card.edition,
-            language= card.language,
-            foil= card.foil,
-            price= card.price,
-            quantity= card.quantity,
-            user_id= card.user_id,
+            name = name,
+            edition = edition,
+            language = language,
+            foil = foil,
+            price= price,
+            quantity = 0,
+            user_name=user_name,
         )
 
         self.db.add(db_card)
@@ -23,8 +33,27 @@ class CardRepository():
 
         return db_card
 
-    def list(self):
-        cards = self.db.query(card_model.Card).all()
+    def list_all(self, user_name: str):
+        cards = (
+            self.
+            db.
+            query(card_model.Card).
+            filter(card_model.Card.user_name==user_name).
+            order_by(desc(card_model.Card.price)).
+            all()
+        )
+        
+        return cards
+    
+    def list_by_name(self, card_name: str, user_name: str):
+        cards = (
+            self.
+            db.
+            query(card_model.Card).
+            filter(card_model.Card.name==card_name, card_model.Card.user_name==user_name).
+            order_by(desc(card_model.Card.price)).
+            all()
+        )
         
         return cards
 

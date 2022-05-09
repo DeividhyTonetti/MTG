@@ -4,7 +4,7 @@ from config.db import Base
 
 class Card(Base):
     __tablename__ = 'card'
-
+    
     id = Column('id', Integer, primary_key=True, nullable=False)
     name = Column('name', String(255), nullable=False)
     edition = Column('edition', String(255), nullable=False)
@@ -12,4 +12,4 @@ class Card(Base):
     foil = Column('foil', Boolean(False), nullable=False)
     price = Column('price', Float, nullable=False)
     quantity = Column('quantity', Integer, nullable=False)
-    user_id = Column('user_id', String(255), nullable=False)
+    user_name = Column('user_name', String(255), nullable=False)
