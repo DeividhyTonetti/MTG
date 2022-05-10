@@ -49,29 +49,6 @@ Existem "N" forma de realizar essa criação, a maneira que eu acho mais fácil 
 
 ## Navegue até a pasta do projeto via terminal terminal/cmd
 $ cd (diretório...)
-
-# Rotas acessíveis
-  ## Para observar a documentação
-   ### /docs 
-
-  ## Criar a carta
-   ### /card/create
-   	É necessário informar name, user_name, edition, foil, price
-  ## Listar todas as cartas
-   ### /listCard/{name_card}/{name_user}
-   	É necessário informar o name_card, name_user
-	
-  ## Listar uma única carta
-   ### /card/listAllCards
-   	É necessário informar o name_user
-	
-  ## Atualizar a carta
-   ### /card/editCard/{name_card}
-     	É necessário informar o name_card, name_user, quantity (opcional), price(opcional)
-
-  ## Deletar a carta
-   ### /card/editCard/{name_card}
-     	É necessário informar o name_card, name_user
   
 ## Crie um arquivo chamado .env na raiz do projeto e insira as seguintes variáveis de ambiente:
 ### Database
@@ -105,6 +82,28 @@ Acesse no seu navegador <http://localhost:PORTA>
 Acesse no seu navegador <http://localhost:PORTA/docs>
 Neste momento é possivel visualizar todas as rotas utilizadas no projeto, além disso, também é possivel acessar e testar essas as rotas.
 
+# Rotas acessíveis
+  ## Para observar a documentação
+   ### /docs 
+
+  ## Criar a carta
+   ### /card/create
+   	É necessário informar name, user_name, edition, foil, price
+  ## Listar todas as cartas
+   ### /listCard/{name_card}/{name_user}
+   	É necessário informar o name_card, name_user
+	
+  ## Listar uma única carta
+   ### /card/listAllCards
+   	É necessário informar o name_user
+	
+  ## Atualizar a carta
+   ### /card/editCard/{name_card}
+     	É necessário informar o name_card, name_user, quantity (opcional), price(opcional)
+
+  ## Deletar a carta
+   ### /card/editCard/{name_card}
+     	É necessário informar o name_card, name_user
 # 
 ### 🛠 Tecnologias
 
