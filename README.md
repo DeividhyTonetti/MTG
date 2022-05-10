@@ -54,22 +54,22 @@ $ cd (diretório...)
   ## Para observar a documentação
    ### /docs 
 
-  ## Criação da carta
+  ## Criar a carta
    ### /card/create
    	É necessário informar name, user_name, edition, foil, price
-  ## Listagem de todas as cartas
+  ## Listar todas as cartas
    ### /listCard/{name_card}/{name_user}
    	É necessário informar o name_card, name_user
 	
-  ## Listagem de uma única cartas
+  ## Listar uma única carta
    ### /card/listAllCards
    	É necessário informar o name_user
 	
-  ## Atualização da carta
+  ## Atualizar a carta
    ### /card/editCard/{name_card}
      	É necessário informar o name_card, name_user, quantity (opcional), price(opcional)
 
-  ## Deleção da carta
+  ## Deletar a carta
    ### /card/editCard/{name_card}
      	É necessário informar o name_card, name_user
   
