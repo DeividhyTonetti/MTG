@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from Routes.router import router
-from config.db import create_db
+from src.Routes.router import router
+from src.config.db import create_db
 
 create_db()
 

@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from scheme import schemes
-from models import card_model
+# from scheme import schemes
+from src.models import card_model
 from sqlalchemy import desc
 
 class CardRepository():

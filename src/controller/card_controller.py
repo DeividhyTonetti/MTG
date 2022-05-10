@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, Query
 from googletrans import Translator
 from sqlalchemy.orm import Session
-from config.db import get_db
-from scheme.schemes import CardScheme
+from src.config.db import get_db
+# from scheme.schemes import CardScheme
 from repository.card_repository import CardRepository
 
 router = APIRouter()

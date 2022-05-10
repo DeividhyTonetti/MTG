@@ -1,1 +1,1 @@
-web: gunicorn -w 4 -k uvicorn.wolers.UnicornWoker main:app
+web: gunicorn -w -k uvicorn.workers.UnicornWorker --log-level debug main:app

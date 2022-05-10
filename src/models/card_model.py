@@ -1,6 +1,6 @@
 from sqlalchemy import Column
 from sqlalchemy.sql.sqltypes import Integer, String, Boolean, Float
-from config.db import Base
+from src.config.db import Base
 
 class Card(Base):
     __tablename__ = 'card'
